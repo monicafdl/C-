@@ -1,0 +1,16 @@
+using Repositorio.Entidades;
+using FluentNHibernate.Mapping;
+namespace Repositorio.Mapeamento
+{
+    public class CadastroMap :  ClassMap<Cadastro>
+    {
+        public CadastroMap() 
+        {
+            Map(c => c.Nome);
+            Map(c => c.Sobrenome);
+            Map(c => c.Email);
+            Map(c => c.Telefone);
+            Table("Cadastro");
+        }
+    }
+}
