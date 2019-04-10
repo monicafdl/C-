@@ -1,0 +1,47 @@
+ private void btnIncluir_Click(object sender, EventArgs e)
+        {
+            errorProvider1.Clear();
+            if (txtNome.Text == string.Empty)
+            {
+                errorProvider1.SetError(txtNome, "Informe o nome ");
+                return;
+            }
+            if (txtSobrenome.Text == string.Empty)
+            {
+                errorProvider1.SetError(txtSobrenome, "Informe o sobrenome ");
+                return;
+            }
+            if (txtEmail.Text == string.Empty)
+            {
+                errorProvider1.SetError(txtEmail, "Informe o email");
+                return;
+            }
+            
+            if (intTelefone.Inte == string.Empty)
+            {
+                errorProvider1.SetError(intTelefone, "Informe o telefone");
+                return;
+            }
+            CadastroRepositorio cadastroRepo = new CadastroRepositorio();
+            if ((cadastroRepo.ValidarLogin(txtLogin.Text)))
+            {
+                MessageBox.Show("já esta Cadastrado", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                try
+                {
+                    Usuario user = new Cadastro();
+                    user.Nome = txtNome.Text;
+                    user.Sobrenome = txtSobrenome.Text;
+                    user.Email = txtEmail.Text;
+                    user.Telefone = intTelefone.Int();
+                    cadastroRepo.Inserir(user);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao cadastrar " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                MessageBox.Show("Cadastrado com sucesso", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
