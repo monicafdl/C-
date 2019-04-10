@@ -1,0 +1,19 @@
+private void lnklbRegistrar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+ {
+            frmRegistro frmreg = new frmRegistro();
+            frmreg.Show();
+ }
+ 
+ private void registrarToolStripMenuItem_Click(object sender, EventArgs e)
+ {
+            //frmRegistro frmreg = new frmRegistro();
+            //frmreg.Show();
+            lnklbRegistrar_LinkClicked(lnklbRegistrar, null);
+  }
+  
+  private void frmRegistro_Load(object sender, EventArgs e)
+{
+            cboStatus.SelectedIndex = 0;
+            this.ActiveControl = txtNome;
+            txtNome.Focus();
+ }
